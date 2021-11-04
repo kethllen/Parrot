@@ -53,15 +53,23 @@ body {
 .back-face {
   transform: rotateY(180deg);
 }
-.cardVira.back-face {
+.cardVirar.back-face {
   transform: rotateY(0deg);
 }
 
-.cardVira.front-face {
+.front-face.cardVirar {
   transform: rotateY(-180deg);
+  height: 100px;
+  width: 100px;
+  background-image: url("../assets/bobrossparrot.gif");
 }
 .front-face .piriquito{
   height: 100px;
   width: 100px;
   background-image: url("../assets/front\ 1.png");
+}
+
+.back-face .imagem{
+  height: 100px;
+  width: 100px;
 }
