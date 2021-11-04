@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+body {
+    background-color: #E5E5E5;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ header{
+  margin-top: 40px;
+  margin-bottom: 47px;
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 66px;
+  letter-spacing: -0.004em;
+  text-align: left;
+  color:#75B79E;
+  
+ }
+
+ main{
+   display: flex;
+   flex-direction: row;
+   gap: 44px;
+   flex-wrap: wrap;
+   margin-left: 122px;
+   margin-right: 116px;
+ }
+.card{
+  background-color: #A7E9AF;
+  height: 146px;
+  width: 117px;
+  position: relative;
+}
+.face{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #99CEA8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all .5s;
+  transform-style: preserve-3d;
+}
+.back-face {
+  transform: rotateY(180deg);
+}
+.cardVira.back-face {
+  transform: rotateY(0deg);
+}
+
+.cardVira.front-face {
+  transform: rotateY(-180deg);
+}
+.front-face .piriquito{
+  height: 100px;
+  width: 100px;
+  background-image: url("../assets/front\ 1.png");
+}
