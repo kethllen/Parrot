@@ -2,9 +2,10 @@ let numeroDeCartas = 0;
 let qntPares = 0;
 let baralhoAtual = [];
 let contador =0;
-let carta1="";
-let carta2="";
+let carta1;
+let carta2;
 let pares=0;
+let jogadas =0;
 while(numeroDeCartas < 4 || numeroDeCartas > 14 || numeroDeCartas % 2 !==0){
    numeroDeCartas = parseInt(prompt("Com quantas cartas você quer jogar?(Escolha um número entre 4 e 14 cartas e que seja par)"));
 }
@@ -29,6 +30,7 @@ function virarCartaBaixo(carta){
         card.classList.remove("cardVirarCima")
     }
     card.classList.add("cardVirarBaixo");
+    jogadas++;
     contador++;
     if(contador == 1){
         carta1=card;
@@ -38,19 +40,28 @@ function virarCartaBaixo(carta){
         verificarPar();
     }
 }
-function virarCartaCima(carta){
-    console.log("vou virar");
-    console.log(carta);
-    if(carta.classList.contains("cardVirarBaixo")){
-        console.log("contem sim");
-        carta.classList.remove("cardVirarBaixo");
-        console.log(carta);
-    }
-    carta.classList.add("cardVirarCima");
-    console.log(carta);
+function virarCartaCima(){
+    
+    console.log(carta1);
+    carta1.classList.remove("cardVirarBaixo");
+    carta2.classList.remove("cardVirarBaixo");
+    carta1.classList.add("cardVirarCima");
+    carta2.classList.add("cardVirarCima");
+
 }
+
+function verificarSeGanhou(){
+let jogarNovamente;
+    if(pares == (numeroDeCartas/2)){
+        alert("Você ganhou em " + jogadas +" jogadas!")
+        jogarNovamente = prompt("Você gostaria de jogar novamente?")
+        if(jogarNovamente == "sim" || jogarNovamente == "Sim" ||jogarNovamente == "s"){
+            window.location.reload();
+        }
+    }
+}
+
 function verificarPar(){
-    console.log("oi");
     
     let img1 = carta1.childNodes; //encontrando a div verso da carta
     img1 = img1[3].childNodes; // encontrando a div imagem 
@@ -59,18 +70,19 @@ function verificarPar(){
     img2 = img2[3].childNodes; // encontrando a div imagem 
     img2 = img2[1].getAttribute("src");
 
-    if(img1==img2){
+    if(img1==img2){ //é par
         pares++;
-        console.log("par")
-    }else{
-        console.log("Naopar")
-        virarCartaCima(carta1);
-        virarCartaCima(carta2);
-    }
+        contador = 0;
+        carta1="";
+        carta2="";
+    }else{ //não é par
+        setTimeout(() => {  virarCartaCima(); 
+            contador = 0;
+            carta1="";
+            carta2="";}, 1000);
 
-    contador = 0;
-    carta1="";
-    carta2="";
+    }
+    setTimeout(() => {  verificarSeGanhou();}, 1000);
 }
 
 
