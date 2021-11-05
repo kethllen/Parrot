@@ -72,11 +72,15 @@ function fimJogo(){
     console.log("oi");
     let ganhou = document.querySelector(".ganhou");
     ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas!`;
+    
+}
+
+function jogar(){
     let resposta = document.querySelector(".pegarresposta");
     resposta = resposta.value;
     console.log(resposta);
     if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
-     window.location.reload();
+        window.location.reload();
     }
 }
 
