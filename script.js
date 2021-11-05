@@ -49,15 +49,34 @@ function virarCartaCima(){
     carta2.classList.add("cardVirarCima");
 
 }
-
 function verificarSeGanhou(){
-let jogarNovamente;
     if(pares == (numeroDeCartas/2)){
-        alert("Você ganhou em " + jogadas +" jogadas!")
-        jogarNovamente = prompt("Você gostaria de jogar novamente?")
-        if(jogarNovamente == "sim" || jogarNovamente == "Sim" ||jogarNovamente == "s"){
-            window.location.reload();
-        }
+        console.log("oi querida")
+        let acabou = document.querySelector(".escondida");
+        console.log(acabou)
+        acabou.classList.remove("escondida");
+        console.log(acabou)
+        fimJogo();
+    }
+// let jogarNovamente;
+//     if(pares == (numeroDeCartas/2)){
+//         alert("Você ganhou em " + jogadas +" jogadas!")
+//         jogarNovamente = prompt("Você gostaria de jogar novamente?")
+//         if(jogarNovamente == "sim" || jogarNovamente == "Sim" ||jogarNovamente == "s"){
+//             window.location.reload();
+//         }
+//     }
+}
+
+function fimJogo(){
+    console.log("oi");
+    let ganhou = document.querySelector(".ganhou");
+    ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas!`;
+    let resposta = document.querySelector(".pegarresposta");
+    resposta = resposta.value;
+    console.log(resposta);
+    if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
+     window.location.reload();
     }
 }
 
