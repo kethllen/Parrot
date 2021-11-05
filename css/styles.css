@@ -36,7 +36,18 @@ body {
   height: 146px;
   width: 117px;
   position: relative;
+  transition: all .5s;
+  transform-style: preserve-3d;
 }
+
+.cardVirarBaixo{
+  transform: rotateY(-180deg);
+}
+
+.cardVirarCima{
+  transform: rotateY(0deg);
+}
+
 .face{
   height: 100%;
   width: 100%;
@@ -53,15 +64,13 @@ body {
 .back-face {
   transform: rotateY(180deg);
 }
-.cardVirar.back-face {
+.back-face.face.virar {
   transform: rotateY(0deg);
 }
 
-.front-face.cardVirar {
-  transform: rotateY(-180deg);
-  height: 100px;
-  width: 100px;
-  background-image: url("../assets/bobrossparrot.gif");
+
+.escondida{
+  display:none;
 }
 .front-face .piriquito{
   height: 100px;
@@ -72,4 +81,7 @@ body {
 .back-face .imagem{
   height: 100px;
   width: 100px;
+}
+#switch{
+	display: none;
 }
