@@ -108,17 +108,17 @@ function fimJogo(){
     let ganhou = document.querySelector(".ganhou");
     let min = document.querySelector('.minuto');
     let seg = document.querySelector('.segundo');
-    ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas! E em ${min.textContent}:${seg.textContent} tempo!`;    
+    ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas! E em ${min.textContent}:${seg.textContent}!`;    
 }
 
-function jogar(){
+// function jogar(){
 
-    let resposta = document.querySelector(".pegarresposta");
-    resposta = resposta.value;
-    if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
-        window.location.reload();
-    }
-}
+//     let resposta = document.querySelector(".pegarresposta");
+//     resposta = resposta.value;
+//     if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
+//         window.location.reload();
+//     }
+// }
 
 function verificarPar(){
     
