@@ -111,15 +111,6 @@ function fimJogo(){
     ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas! E em ${min.textContent}:${seg.textContent}!`;    
 }
 
-// function jogar(){
-
-//     let resposta = document.querySelector(".pegarresposta");
-//     resposta = resposta.value;
-//     if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
-//         window.location.reload();
-//     }
-// }
-
 function verificarPar(){
     
     let img1 = carta1.childNodes; //encontrando a div verso da carta
