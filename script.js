@@ -6,6 +6,12 @@ let carta1;
 let carta2;
 let pares=0;
 let jogadas =0;
+let minuto = 0;
+let segundo = 0;
+let milisegundo = 0;
+let cron;
+let inicio = false;
+
 while(numeroDeCartas < 4 || numeroDeCartas > 14 || numeroDeCartas % 2 !==0){
    numeroDeCartas = parseInt(prompt("Com quantas cartas você quer jogar?(Escolha um número entre 4 e 14 cartas e que seja par)"));
 }
@@ -16,6 +22,41 @@ const baralho = ["./assets/bobrossparrot.gif", "./assets/explodyparrot.gif", "./
 // Esta função pode ficar separada do código acima, onde você preferir
 function comparador() { 
 	return Math.random() - 0.5; 
+}
+function timer() {
+    if ((milisegundo += 10) == 1000) {
+      milisegundo = 0;
+      segundo++;
+    }
+    if (segundo == 60) {
+      segundo = 0;
+      minuto++;
+    }
+    let min = document.querySelector('.minuto');
+    let seg = document.querySelector('.segundo');
+    min.innerHTML = returnDado(minuto);
+    seg.innerHTML = returnDado(segundo);
+}
+function returnDado(input) {
+
+    let dado="";
+    if(input < 10){
+        dado=`0${input}`;
+    }else{
+        dado = input;
+    }
+
+    return dado;
+}
+
+function start() {
+
+    cron = setInterval(() => { timer(); }, 10);
+}
+
+function pause() {
+
+    clearInterval(cron);
 }
 
 baralho.sort(comparador);
@@ -30,6 +71,10 @@ function virarCartaBaixo(carta){
         card.classList.remove("cardVirarCima")
     }
     card.classList.add("cardVirarBaixo");
+    if(inicio == false){
+        inicio =true;
+        start();
+    }
     jogadas++;
     contador++;
     if(contador == 1){
@@ -41,44 +86,35 @@ function virarCartaBaixo(carta){
     }
 }
 function virarCartaCima(){
-    
-    console.log(carta1);
+
     carta1.classList.remove("cardVirarBaixo");
     carta2.classList.remove("cardVirarBaixo");
     carta1.classList.add("cardVirarCima");
     carta2.classList.add("cardVirarCima");
-
 }
+
 function verificarSeGanhou(){
+
     if(pares == (numeroDeCartas/2)){
-        console.log("oi querida")
+        pause();
         let acabou = document.querySelector(".escondida");
-        console.log(acabou)
         acabou.classList.remove("escondida");
-        console.log(acabou)
         fimJogo();
     }
-// let jogarNovamente;
-//     if(pares == (numeroDeCartas/2)){
-//         alert("Você ganhou em " + jogadas +" jogadas!")
-//         jogarNovamente = prompt("Você gostaria de jogar novamente?")
-//         if(jogarNovamente == "sim" || jogarNovamente == "Sim" ||jogarNovamente == "s"){
-//             window.location.reload();
-//         }
-//     }
 }
 
 function fimJogo(){
-    console.log("oi");
+
     let ganhou = document.querySelector(".ganhou");
-    ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas!`;
-    
+    let min = document.querySelector('.minuto');
+    let seg = document.querySelector('.segundo');
+    ganhou.innerHTML=`Você ganhou em ${jogadas} jogadas! E em ${min.textContent}:${seg.textContent} tempo!`;    
 }
 
 function jogar(){
+
     let resposta = document.querySelector(".pegarresposta");
     resposta = resposta.value;
-    console.log(resposta);
     if(resposta == "sim" || resposta == "Sim" ||resposta == "s"){
         window.location.reload();
     }
@@ -108,8 +144,6 @@ function verificarPar(){
     setTimeout(() => {  verificarSeGanhou();}, 1000);
 }
 
-
-
 function darCartas(){
     const card = document.querySelector("main");
 
@@ -128,5 +162,3 @@ function darCartas(){
 }
 
 darCartas();
-
-
