@@ -66,23 +66,25 @@ baralhoAtual = baralhoAtual.concat(baralhoAtual);
 baralhoAtual.sort(comparador);
 
 function virarCartaBaixo(carta){
-    const card = carta.parentNode;
-    if(card.classList.contains("cardVirarCima")){
-        card.classList.remove("cardVirarCima")
-    }
-    card.classList.add("cardVirarBaixo");
-    if(inicio == false){
-        inicio =true;
-        start();
-    }
-    jogadas++;
-    contador++;
-    if(contador == 1){
-        carta1=card;
-    }
-    if(contador == 2){
-        carta2=card;
-        verificarPar();
+    if(contador < 2){
+        const card = carta.parentNode;
+        if(card.classList.contains("cardVirarCima")){
+            card.classList.remove("cardVirarCima")
+        }
+        card.classList.add("cardVirarBaixo");
+        if(inicio == false){
+            inicio =true;
+            start();
+        }
+        jogadas++;
+        contador++;
+        if(contador == 1){
+            carta1=card;
+        }
+        if(contador == 2){
+            carta2=card;
+            verificarPar();
+        }
     }
 }
 function virarCartaCima(){
